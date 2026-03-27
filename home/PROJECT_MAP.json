@@ -1,0 +1,60 @@
+{
+  "projectName": "websoso",
+  "entryPoints": [
+    "index.php",
+    "smart_inquiry.php",
+    "pages/about/about2.php"
+  ],
+  "importantFiles": [
+    {
+      "path": "index.php",
+      "purpose": "Main Homepage.",
+      "dependsOn": [
+        "includes/header.php",
+        "includes/navigation.php",
+        "includes/data_index.php",
+        "includes/footer.php"
+      ]
+    },
+    {
+      "path": "includes/config.php",
+      "purpose": "Global configuration variables like BASE_URL."
+    },
+    {
+      "path": "includes/database.php",
+      "purpose": "Provides the database connection object."
+    },
+    {
+      "path": "includes/functions.php",
+      "purpose": "Shared application helper functions."
+    },
+    {
+      "path": "includes/data_nav.php",
+      "purpose": "Data dictionary defining the hierarchy and links of the main website navigation menu."
+    },
+    {
+      "path": "includes/navigation.php",
+      "purpose": "The UI rendering file for the top navigation menu.",
+      "dependsOn": [
+        "includes/data_nav.php"
+      ]
+    },
+    {
+      "path": "css/menu-custom.css",
+      "purpose": "Specific overrides for the complex dropdown menus."
+    },
+    {
+      "path": "pages/about/about2.php",
+      "purpose": "Unified container page for the About Ministry section. Loads different tabs dynamically."
+    },
+    {
+      "path": "dataN.sql",
+      "purpose": "Source DB schema and data dump."
+    }
+  ],
+  "conventions": {
+    "routing": "File-path based routing, frequently leveraging query parameters (e.g., ?tab=xyz) for component switching.",
+    "assets": "Use BASE_URL constant for all absolute linking of CSS/JS/Images to prevent pathing issues.",
+    "language": "Arabic (RTL) is the default and primary directionality."
+  }
+}

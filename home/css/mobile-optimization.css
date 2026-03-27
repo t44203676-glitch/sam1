@@ -1,0 +1,80 @@
+/* Global Mobile Optimization Reset */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    -webkit-text-size-adjust: 100%;
+}
+
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fluid Typography */
+body {
+    font-size: 16px;
+    /* Base for mobile */
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 14px;
+        /* Slightly smaller for desktop if using Tahoma/Arabic */
+    }
+}
+
+/* Flexbox containers safety */
+.container,
+.row,
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Table responsiveness hack */
+.responsive-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* LayoutTd alignment fixes for RTL */
+[valign="top"] {
+    vertical-align: top;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.rtl .pull-left {
+    float: right;
+}
+
+.rtl .pull-right {
+    float: left;
+}
+
+/* Grid helper */
+.grid-container {
+    display: grid;
+    gap: 15px;
+}

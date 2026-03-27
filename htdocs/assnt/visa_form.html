@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج تأشيرة وزارة الداخلية</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Rakkas&display=swap');
+
+        @font-face {
+            font-family: 'Elgharib Basmala';
+            src: url('Elgharib-Basmala.ttf') format('truetype');
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+
+        @font-face {
+            font-family: 'Al-samt-tow';
+            src: url('../public/fonts/Al-samt-tow.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Traditional Arabic', serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .document-container {
+            background-color: white;
+            width: 260mm;
+            /* A4 width increased */
+            min-height: 297mm;
+            /* A4 height */
+            padding: 15mm 20mm;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Header Layout */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 0px solid #000;
+        }
+
+        .header-right {
+            text-align: right;
+            line-height: 1.4;
+            font-weight: normal;
+            font-size: 26px;
+            font-family: 'Al-samt-tow', serif;
+        }
+
+        .header-center {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .basmala {
+            font-family: 'Elgharib Basmala';
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .header-left {
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.8;
+            width: 200px;
+        }
+
+        .barcode-container {
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .barcode {
+            height: 25px;
+            background: repeating-linear-gradient(to right,
+                    #000 0px, #000 1px,
+                    transparent 1px, transparent 2px,
+                    #000 2px, #000 3px,
+                    transparent 3px, transparent 5px,
+                    #000 5px, #000 6px,
+                    transparent 6px, transparent 7px);
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .barcode::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            background: repeating-linear-gradient(to right,
+                    transparent 0px, transparent 2px,
+                    white 2px, white 5px,
+                    transparent 5px, transparent 7px);
+        }
+
+        /* Body Content */
+        .content-body {
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
+        .recipient {
+            font-weight: normal;
+            margin: 0;
+            display: block;
+            font-family: 'Arabic Typesetting', serif;
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .greeting {
+            display: block;
+            margin: 0;
+            font-family: 'Arabic Typesetting', serif;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .approval-text {
+            display: block;
+            margin: 0;
+            font-family: 'Arabic Typesetting', serif;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        /* Sponsor Info Grid */
+        .sponsor-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sponsor-details-right {
+            text-align: right;
+        }
+
+        .sponsor-details-data {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .label {
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        /* Visitors Table */
+        .visitors-section {
+            border: 4px solid #a8c6df;
+            /* Light bluish border */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .section-title {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 0 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .visitor-row {
+            display: flex;
+            border-bottom: 1px solid #a8c6df;
+            padding: 10px 10px 10px 40px;
+            /* Right padding for alignment, Left padding for vertical text space */
+            position: relative;
+        }
+
+        .visitor-row:last-child {
+            border-bottom: none;
+        }
+
+        .visitor-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+        }
+
+        .visitor-col.large {
+            flex: 1.2;
+        }
+
+        .visitor-row .visitor-col:nth-child(2) {
+            padding-right: 70px;
+            /* Pushes content towards the left (Age/Duration) */
+        }
+
+        .visitor-field {
+            display: flex;
+            align-items: center;
+            height: 24px;
+        }
+
+        .visitor-field label {
+            font-weight: bold;
+            margin-left: 5px;
+            color: #333;
+        }
+
+        .field-value {
+            border-bottom: 1px dashed #ccc;
+            flex-grow: 1;
+            min-width: 20px;
+        }
+
+        /* Side Text (Watermark style) */
+        .side-text {
+            position: absolute;
+            left: -85px;
+            top: 20%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 20px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            font-size: 24px;
+            font-family: 'Arabic Typesetting', serif;
+        }
+
+        .footer-note {
+            margin-bottom: 40px;
+            line-height: 1.4;
+            font-family: 'Arabic Typesetting', serif;
+            font-weight: normal;
+            font-size: 32px;
+        }
+
+        .footer-note strong {
+            color: #d00;
+        }
+
+        .footer-signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .signature-block {
+            text-align: center;
+        }
+
+        /* Print adjustments */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .document-container {
+                box-shadow: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="document-container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-right">
+                <div>الْمَمْلَكَةُ الْعَرَبِيَّةُ السُّعُودِيَّةُ</div>
+                <div>وِزَارَةُ الدَّاخِلِيَّةِ</div>
+                <div>الْإِسْتِقْدَامُ</div>
+                <div>قِسْمُ الزِّيَارَاتِ</div>
+            </div>
+
+            <div class="header-center">
+                <div class="basmala">﷽</div>
+                <img src="waza.jpeg" alt="Ministry Logo" class="logo">
+            </div>
+
+            <div class="header-left">
+                <div style="text-align: center;">صفحة :</div>
+                <div class="barcode-container">
+                    <div class="barcode"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>الرقم :</span>
+                    <span></span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>التاريخ :</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="content-body">
+            <div class="recipient">وزارة الـخـارجـيـة</div>
+            <div class="greeting">الـسـلام عـلـيـكـم ورحـمـة الله وبـركـاتـه</div>
+            <div class="approval-text">حـيـث تـقـرر الـمـوافـقـة بـالـتـأشـيـرة لـلـمـوضـح عـنـهـم أدنـاه تـحـت كـفـالـة
+            </div>
+
+            <!-- Sponsor Info -->
+            <div style="font-family: 'Arabic Typesetting', serif; font-size: 26px; margin-bottom: 20px;">
+                <div style="font-weight: bold;">الجـنـسـيـة :</div>
+                <div style="font-weight: bold;">الـعـنـوان :</div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <div style="font-weight: bold; flex: 1; text-align: right;">رقم الكفيل :</div>
+                    <div style="font-weight: bold; flex: 1; text-align: center;">رقم الـحـاسـب :</div>
+                    <div style="font-weight: bold; flex: 1; text-align: left;">
+                        <span>عدد الـتـأشـيـرات :</span>
+                        <span style="color: blue;">1</span>
+                    </div>
+                </div>
+                <div style="font-weight: bold;">اسم الكفيل :</div>
+            </div>
+
+            <!-- Visitors Table -->
+            <div class="visitors-section">
+                <div class="section-title">بَيَــــانَــــاتُ الْمَطْلُــــوبِ زِيَــــارَتُهُــــمْ</div>
+
+                <div class="side-text">مع تحيات مركز المعلومات</div>
+
+                <!-- Row 1 -->
+                <div class="visitor-row">
+                    <!-- Column 1 (Right) -->
+                    <div class="visitor-col large">
+                        <div class="visitor-field"><label>إسم الزائر :</label> <span> </span></div>
+                        <div class="visitor-field"><label>جنسيته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>العلاقة :</label> <span> </span></div>
+                    </div>
+
+                    <!-- Column 2 (Center) -->
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div> <!-- Spacer -->
+                        <div class="visitor-field"><label>مهنته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>قادم من :</label> <span> </span></div>
+                    </div>
+
+                    <!-- Column 3 (Left) -->
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div> <!-- Spacer -->
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>السن :</label> <span
+                                style="width: 60px;"></span><label>سنة</label></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>المدة :</label> <span
+                                style="width: 60px;"></span><label>يوم</label></div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="visitor-row">
+                    <div class="visitor-col large">
+                        <div class="visitor-field"><label>إسم الزائر :</label> <span> </span></div>
+                        <div class="visitor-field"><label>جنسيته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>العلاقة :</label> <span> </span></div>
+                    </div>
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div>
+                        <div class="visitor-field"><label>مهنته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>قادم من :</label> <span> </span></div>
+                    </div>
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>السن :</label> <span
+                                style="width: 60px;"></span><label>سنة</label></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>المدة :</label> <span
+                                style="width: 60px;"></span><label>يوم</label></div>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="visitor-row">
+                    <div class="visitor-col large">
+                        <div class="visitor-field"><label>إسم الزائر :</label> <span> </span></div>
+                        <div class="visitor-field"><label>جنسيته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>العلاقة :</label> <span> </span></div>
+                    </div>
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div>
+                        <div class="visitor-field"><label>مهنته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>قادم من :</label> <span> </span></div>
+                    </div>
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>السن :</label> <span
+                                style="width: 60px;"></span><label>سنة</label></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>المدة :</label> <span
+                                style="width: 60px;"></span><label>يوم</label></div>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="visitor-row">
+                    <div class="visitor-col large">
+                        <div class="visitor-field"><label>إسم الزائر :</label> <span> </span></div>
+                        <div class="visitor-field"><label>جنسيته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>العلاقة :</label> <span> </span></div>
+                    </div>
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div>
+                        <div class="visitor-field"><label>مهنته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>قادم من :</label> <span> </span></div>
+                    </div>
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>السن :</label> <span
+                                style="width: 60px;"></span><label>سنة</label></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>المدة :</label> <span
+                                style="width: 60px;"></span><label>يوم</label></div>
+                    </div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="visitor-row">
+                    <div class="visitor-col large">
+                        <div class="visitor-field"><label>إسم الزائر :</label> <span> </span></div>
+                        <div class="visitor-field"><label>جنسيته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>العلاقة :</label> <span> </span></div>
+                    </div>
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div>
+                        <div class="visitor-field"><label>مهنته :</label> <span> </span></div>
+                        <div class="visitor-field"><label>قادم من :</label> <span> </span></div>
+                    </div>
+                    <div class="visitor-col">
+                        <div class="visitor-field" style="height: 24px;"></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>السن :</label> <span
+                                style="width: 60px;"></span><label>سنة</label></div>
+                        <div class="visitor-field"><span style="flex-grow: 1;"></span><label>المدة :</label> <span
+                                style="width: 60px;"></span><label>يوم</label></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-note">
+                    <strong>* مـلـحـوظــة :</strong><br>
+                    أمــــل مــــن ســـــعادتكم إبــــلاغ ســـــفارات خادم الحرمين الشريفين الـمـعـنـيـة بالتأشـيـر
+                    بالزيارة المحددة مالم يكن على من
+                    سيؤشر بدخولهم ملاحظات
+                </div>
+
+                <div class="footer-signatures">
+                    <div class="signature-block">
+                        رقم الباحث : ....................
+                    </div>
+                    <div class="signature-block" style="text-align: center; width: 200px;">
+                        مدير عام الإستقدام
+                        <br><br><br>
+                        .......................
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

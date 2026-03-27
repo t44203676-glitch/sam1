@@ -1,0 +1,376 @@
+/* Mobile Drawer Menu Styles - Pixel Perfect Rebuild */
+:root {
+    --primary-green: #008f56;
+    --border-light: #eeeeee;
+    --text-main: #666666;
+    --bg-white: #ffffff;
+    --transition-speed: 0.3s;
+}
+
+/* Hide on Desktop */
+@media (min-width: 768px) {
+
+    .mobile-menu-trigger-bar,
+    .mobile-menu-trigger-container,
+    .mobile-menu-drawer,
+    .mobile-menu-overlay {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* Setup */
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        font-family: 'Droid Arabic Kufi', Tahoma, Arial, sans-serif;
+    }
+
+    .wrapper {
+        width: 100%;
+        max-width: none !important;
+        background: #fff;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+    /* Toggle Bar - Full Width Green Bar */
+    .mobile-menu-trigger-bar {
+        width: 100%;
+        background: #00a651;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        /* Correct for RTL: Right side */
+        padding: 0;
+        box-shadow: none !important;
+        border: none !important;
+        outline: none !important;
+        background: #00a651 !important;
+        z-index: 1000;
+        margin-top: 0;
+        direction: rtl;
+    }
+
+    .mobile-menu-trigger-bar .container-fluid {
+        width: 100%;
+        max-width: 960px;
+        /* Align content with the site's content width */
+        margin: 0 auto;
+        padding: 0 15px;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .mobile-menu-toggle-btn {
+        background: transparent !important;
+        color: #fff !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-family: 'Droid Arabic Kufi', Tahoma;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0;
+    }
+
+    .mobile-menu-toggle-btn:focus,
+    .mobile-menu-toggle-btn:active {
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .toggle-text {
+        margin-left: 10px;
+    }
+
+    .toggle-icon {
+        font-size: 24px;
+    }
+
+    /* Menu Drawer */
+    .mobile-menu-drawer {
+        position: fixed;
+        top: 0;
+        right: -70% !important;
+        /* Start hidden off-screen to the right */
+        width: 70% !important;
+        /* Take only 70% of the width */
+        height: 100vh;
+        /* Using vh */
+        background: #fff;
+        z-index: 999999;
+        transition: right 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        direction: rtl;
+        box-shadow: none !important;
+        border: none !important;
+        /* Removes shadow to separate from page content - Flat Look */
+        font-family: 'Droid Arabic Kufi', Tahoma;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden;
+    }
+
+    .mobile-menu-drawer * {
+        box-sizing: border-box !important;
+    }
+
+    .mobile-menu-drawer.active {
+        right: 0 !important;
+        /* Slide in from right but stop at 0, leaving 30% of screen exposed on the left */
+    }
+
+    /* Drawer Header */
+    .mobile-menu-header {
+        background: var(--primary-green);
+        color: #fff;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        flex-shrink: 0;
+        position: relative;
+        border-bottom: 3px solid #007345;
+    }
+
+    /* Header Actions for RTL matching image 4 */
+    /* Right Action: Back Arrow - NOW LEFT */
+    .header-right-action {
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        order: 3;
+    }
+
+    /* Center: Title */
+    .header-title-container {
+        flex: 1;
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+        order: 2;
+        padding-right: 15px;
+    }
+
+    /* Left Action: Home Icon - NOW RIGHT */
+    .header-left-action {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        order: 1;
+        padding-right: 15px;
+    }
+
+    .btn-header {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-header.hidden {
+        visibility: hidden;
+    }
+
+    /* Circular Home Icon in Header */
+    .btn-home-circle {
+        background: #fff;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    .btn-home-circle i.homesprite {
+        display: block;
+        background: url('../images/home_sprite.png') no-repeat;
+        /* Using the home sprite position */
+        width: 40px;
+        height: 40px;
+        background-position: -289px -5px;
+        /* Correct Home Icon Position */
+        transform: scale(0.65);
+    }
+
+    /* Viewport and Menu Items */
+    .mobile-menu-viewport {
+        flex: 1;
+        overflow-y: auto;
+        position: relative;
+        background: #fff;
+    }
+
+    .menu-level {
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+        background: #fff;
+        transition: transform 0.3s ease, opacity 0.3s;
+    }
+
+    .menu-level.submenu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        visibility: hidden;
+    }
+
+    .menu-level.active {
+        transform: translateX(0);
+        visibility: visible;
+        z-index: 10;
+    }
+
+    .menu-level.parent-out {
+        transform: translateX(-30%);
+        opacity: 0.5;
+    }
+
+    /* Menu List */
+    .mobile-menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu-item {
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .menu-link {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #666;
+        transition: background 0.2s;
+        font-size: 15px;
+    }
+
+    .menu-link:active {
+        background: #f8f8f8;
+    }
+
+    .item-icon-circle {
+        width: 38px;
+        height: 38px;
+        background: #fff;
+        border: 1px solid #eeeeee;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 15px;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+
+    /* Sprite icons inside circle */
+    .item-icon-circle i.homesprite {
+        transform: scale(0.7);
+        display: block;
+    }
+
+    .item-img-icon {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 5px;
+    }
+
+    /* Text in Middle */
+    .item-text {
+        flex: 1;
+        font-family: inherit;
+        color: #333333;
+        font-size: 15px;
+    }
+
+    /* Arrow on the Left (RTL) */
+    .item-arrow-left {
+        color: #666;
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: auto;
+        padding-left: 10px;
+    }
+
+    /* Overlay */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 99999;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+
+    .mobile-menu-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* Smaller Utility Bar (English | الاتصال بنا | ...)  and align logo closer */
+    .mobile-links-container {
+        gap: 5px !important;
+        /* padding: 0 10px; removed as requested */
+    }
+
+    .mobile-links-container a,
+    .mobile-links-container span {
+        font-size: 7px !important;
+        font-weight: normal !important;
+    }
+
+    .header-moi .row {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .moi-logo-area a {
+        display: block;
+    }
+
+    .header-logo {
+        max-width: 250px !important;
+        /* Enlarge the logo */
+        height: auto;
+        margin-top: -10px !important;
+        /* Move it higher up */
+    }
+}

@@ -1,0 +1,56 @@
+/* Global Extra Styles extracted from inline blocks */
+.dropdown {
+    text-align: right;
+    margin-right: 22px;
+    margin-left: 5px;
+    padding-right: 35px;
+    padding-left: 0;
+    background: url(../images/icon_employmentappadmin.png) no-repeat;
+    background-position: right 0px center;
+}
+
+.muror21 {
+    text-align: right;
+    margin-right: 22px;
+    margin-left: 5px;
+    padding-right: 35px;
+    padding-left: 0;
+    background: url(../images/icon_traffic.png) no-repeat;
+    background-position: right 0px center;
+}
+
+.emara25 {
+    text-align: right;
+    margin-right: 22px;
+    margin-left: 5px;
+    padding-right: 35px;
+    padding-left: 0;
+    background: url(../images/icon_emirates.png) no-repeat;
+    background-position: right 0px center;
+}
+
+.hijj27 {
+    text-align: right;
+    margin-right: 22px;
+    margin-left: 5px;
+    padding-right: 35px;
+    padding-left: 0;
+    background: url(../images/icon_hajjpermit.png) no-repeat;
+    background-position: right 0px center;
+}
+
+/* Responsive Logo Styles */
+.header-logo {
+    height: 80px;
+    width: auto;
+    display: block;
+    transition: height 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .header-logo {
+        height: 35px;
+        /* Further reduced height for mobile to prevent overlap */
+        max-height: 40px;
+    }
+}

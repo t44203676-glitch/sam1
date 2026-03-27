@@ -1,0 +1,55 @@
+# Security Enhancements for Hostinger Deployment
+
+# 1. Disable Directory Listing
+Options -Indexes
+
+# 2. Protect sensitive folders
+<IfModule mod_authz_core_c>
+    <Files ~ "^\.">
+        Require all denied
+    </Files>
+    <FilesMatch "\.(sql|log|ini|db|bak|config|php_.*)$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+# Block access to the dataN.sql file specifically
+<Files "dataN.sql">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# 3. Protect includes and api directories
+RewriteEngine On
+
+# Prevent direct access to .php files in specific directories
+RewriteRule ^includes/.*\.php$ - [F,L]
+RewriteRule ^api/.*\.config\.php$ - [F,L]
+
+# 4. Force HTTPS (Hostinger requirement for SEO and security)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 5. Prevent Path Traversal
+RewriteCond %{QUERY_STRING} \.\.\/ [NC,OR]
+RewriteCond %{REQUEST_URI} \.\.\/ [NC]
+RewriteRule ^ - [F,L]
+
+# 6. Block access to specific file names commonly targeted
+<FilesMatch "^(composer\.json|composer\.lock|package\.json|package-lock\.json|yarn\.lock|\.env|Dockerfile|docker-compose\.yml)$">
+    Require all denied
+</FilesMatch>
+
+# 7. Security Headers
+<IfModule mod_headers.c>
+    # Prevent MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    # Prevent Clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    # Enable XSS protection in older browsers
+    Header set X-XSS-Protection "1; mode=block"
+    # Strict Transport Security (HSTS) - 1 year
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    # Referrer Policy
+    Header set Referrer-Policy "no-referrer-when-downgrade"
+</IfModule>

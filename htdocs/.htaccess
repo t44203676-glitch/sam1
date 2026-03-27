@@ -1,0 +1,50 @@
+# htdocs Root .htaccess
+# Security and access rules for admin panel
+
+# Disable directory listing
+Options -Indexes
+
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Protect sensitive files
+<FilesMatch "\.(sql|log|ini|db|bak|py)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order Deny,Allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Block access to hidden files
+<Files ~ "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order Deny,Allow
+        Deny from all
+    </IfModule>
+</Files>
+
+# Protect includes directory from direct access
+RewriteRule ^includes/.*\.php$ - [F,L]
+
+# Set proper MIME types
+<IfModule mod_mime.c>
+    AddType image/jpeg .jpg .jpeg
+    AddType image/png .png
+    AddType image/gif .gif
+    AddType image/webp .webp
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
