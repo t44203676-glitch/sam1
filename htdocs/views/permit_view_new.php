@@ -251,13 +251,13 @@ if ($id_number && $issue_number) {
                 <div class="flex items-center gap-4">
                      <!-- KSA Emblem -->
                      <div class="w-[220px] h-[110px] flex items-center justify-center select-none">
-                        <img src="<?php echo BASE_URL; ?>public/images/ministry_of_interior.jpg?v=<?= time() ?>" alt="Ministry of Interior" class="w-full h-full object-contain">
+                        <img src="<?php echo BASE_URL; ?>public/images/ministry_of_interior.jpg?v=<?= time() ?>" alt="Ministry of Interior" class="w-full h-full object-contain" loading="lazy">
                      </div>
                 </div>
 
                  <!-- Center: Absher Logo (Elevated) -->
                 <div class="absolute left-1/2 transform -translate-x-1/2 -top-6 z-10">
-                     <img src="<?php echo BASE_URL; ?>public/images/apsher.png" alt="Absher" class="w-40 object-contain">
+                     <img src="<?php echo BASE_URL; ?>public/images/apsher.png" alt="Absher" class="w-40 object-contain" loading="lazy">
                 </div>
             </div>
         </div>
@@ -474,7 +474,7 @@ if ($id_number && $issue_number) {
             <!-- Right: Logo Area -->
             <div class="flex items-center gap-3 order-1">
                <div class="w-77 h-23 flex items-center justify-center">
-                  <img src="<?php echo BASE_URL; ?>public/images/ministry_of_interior.jpg?v=<?= time() ?>" alt="Ministry of Interior" class="w-full h-full object-contain mix-blend-multiply">
+                  <img src="<?php echo BASE_URL; ?>public/images/ministry_of_interior.jpg?v=<?= time() ?>" alt="Ministry of Interior" class="w-full h-full object-contain mix-blend-multiply" loading="lazy">
                </div>
             </div>
 
@@ -515,7 +515,7 @@ if ($id_number && $issue_number) {
             <!-- Center: NIC -->
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 text-gray-600 text-xs font-semibold whitespace-nowrap">
                  <div class="w-8 h-8 flex items-center justify-center">
-                    <img src="<?php echo BASE_URL; ?>public/images/icon.jpeg" alt="NIC" class="w-full h-full object-contain rounded-full">
+                    <img src="<?php echo BASE_URL; ?>public/images/icon.jpeg" alt="NIC" class="w-full h-full object-contain rounded-full" loading="lazy">
                  </div>
                  <span>تطوير وتشغيل مركز المعلومات الوطني</span>
             </div>

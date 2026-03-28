@@ -81,15 +81,29 @@ endforeach; ?>
 			</tbody>
 		</table>
 	</div>
-	<div id="dialogbox">
-		<div>
-			<div id="dialogboxhead" style="display:none;"></div>
-			<div id="dialogboxheadar"></div>
-			<div id="dialogboxbody"></div>
-			<div style="display:none;" id="dialogboxfoot"></div>
-			<div id="dialogboxfootar"></div>
-		</div>
-	</div>
+	<!-- Structured Data (Schema.org) -->
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "GovernmentOrganization",
+	  "name": "<?php echo SITE_NAME; ?>",
+	  "url": "<?php echo BASE_URL; ?>",
+	  "logo": "<?php echo BASE_URL; ?>images/moi_logo_rtl.png",
+	  "description": "<?php echo SITE_DESCRIPTION; ?>",
+	  "address": {
+	    "@type": "PostalAddress",
+	    "addressLocality": "Riyadh",
+	    "addressCountry": "SA"
+	  },
+	  "contactPoint": {
+	    "@type": "ContactPoint",
+	    "telephone": "+966-920020405",
+	    "contactType": "customer service",
+	    "areaServed": "SA",
+	    "availableLanguage": ["Arabic", "English"]
+	  }
+	}
+	</script>
 </body>
 
 </html>

@@ -9,6 +9,11 @@ include_once __DIR__ . '/functions.php';
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    
+    <!-- Speed: Preload Critical Assets -->
+    <link rel="preload" href="<?php echo BASE_URL; ?>js/jquery.min.js" as="script">
+    <link rel="preload" href="<?php echo BASE_URL; ?>css/style_arabic.css" as="style">
+    <link rel="preload" href="<?php echo BASE_URL; ?>css/font_arabic.css" as="style">
 
 	<?php
 	$full_title = isset($page_title)
@@ -129,7 +134,7 @@ include_once __DIR__ . '/functions.php';
     <div class="row" style="padding-top: 5px; padding-bottom: 20px; display: flex; justify-content: flex-start;">
         <div class="moi-logo-area" style="margin-right: 0; margin-left: auto;">
             <a href="<?php echo BASE_URL; ?>index.php">
-                <img src="<?php echo BASE_URL; ?>images/ministry_of_interior.jpg" alt="وزارة الداخلية" class="header-logo">
+                <img src="<?php echo BASE_URL; ?>images/ministry_of_interior.jpg" alt="وزارة الداخلية" class="header-logo" loading="lazy">
             </a>
         </div>
     </div>

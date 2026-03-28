@@ -211,12 +211,12 @@ $photoPath = getProfilePhotoUrl($rawPhotoPath, $fallbackImg);
         <div class="w-full mb-1">
             <div class="flex justify-between items-center px-4">
                 <div class="w-1/3 text-left">
-                    <img src="<?php echo $assetsUrl; ?>images/ksa_visa_logo1.png" alt="KSA VISA - EVISA"
+                    <img src="<?php echo $assetsUrl; ?>images/ksa_visa_logo1.png" alt="KSA VISA - EVISA" loading="lazy"
                         class="h-24 object-contain">
                 </div>
                 <div class="w-1/3 text-center"></div>
                 <div class="w-1/3 text-right flex justify-end">
-                    <img src="<?php echo $assetsUrl; ?>images/Kingdom_of_Saudi_Arabia_logo_HQ.png"
+                    <img src="<?php echo $assetsUrl; ?>images/Kingdom_of_Saudi_Arabia_logo_HQ.png" alt="KSA Logo" loading="lazy"
                         alt="Kingdom of Saudi Arabia" class="h-28 object-contain">
                 </div>
             </div>
@@ -277,7 +277,7 @@ $photoPath = getProfilePhotoUrl($rawPhotoPath, $fallbackImg);
                 <div class="w-[180px] flex-shrink-0 photo-container">
                     <div
                         class="w-full h-[220px] border-2 border-gray-300 bg-white p-0.5 flex items-center justify-center overflow-hidden">
-                        <img src="<?php echo htmlspecialchars($photoPath); ?>" alt="Visa Holder"
+                        <img src="<?php echo htmlspecialchars($photoPath); ?>" alt="Visa Holder" loading="lazy"
                             class="w-full h-full object-cover">
                     </div>
                 </div>

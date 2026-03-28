@@ -13,7 +13,7 @@ if (!isset($breadcrumb_items)) {
     $breadcrumb_items = [];
     if (isset($active_page)) {
         if ($active_page == 'home') {
-            $breadcrumb_items[] = ['title' => 'الرئيسية'];
+            $breadcrumb_items[] = ['title' => 'الرئيسية', 'link' => BASE_URL . 'index.php'];
         }
         elseif ($active_page == 'sectors') {
             $breadcrumb_items[] = ['title' => 'القطاعات', 'link' => BASE_URL . 'pages/sectors/index.php'];

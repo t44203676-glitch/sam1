@@ -11,6 +11,11 @@ if (!isset($assetsUrl)) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $page_title ?></title>
+    
+    <!-- Speed: Preload Critical Assets -->
+    <link rel="preload" href="<?php echo $assetsUrl; ?>js/tailwindcss.js" as="script">
+    <link rel="preload" href="<?php echo $assetsUrl; ?>css/fonts.css" as="style">
+    <link rel="preload" href="<?php echo $assetsUrl; ?>css/all.min.css" as="style">
     <base href="<?php echo APP_URL; ?>">
     
     <!-- Project Legacy CSS for Navigation Icons -->
@@ -257,12 +262,12 @@ if (!isset($assetsUrl)) {
       <div class="mx-auto max-w-5xl mt-6 mb-6 flex items-center w-full px-0 print:mt-2 print:mb-2" dir="rtl">
           <!-- Right Side: MOI Logo -->
           <div class="w-1/3 flex justify-start items-center">
-              <img src="<?php echo $assetsUrl; ?>images/ministry_of_interior.jpg" alt="Ministry of Interior" class="h-18 object-contain mix-blend-multiply border-0 shadow-none outline-none">
+              <img src="<?php echo $assetsUrl; ?>images/ministry_of_interior.jpg" alt="Ministry of Interior" class="h-18 object-contain mix-blend-multiply border-0 shadow-none outline-none" loading="lazy">
           </div>
 
           <!-- Center: Absher Logo -->
           <div class="w-1/3 flex justify-center items-center">
-                <img src="<?php echo $assetsUrl; ?>images/apsher.png" alt="Absher" class="h-16 object-contain">
+                <img src="<?php echo $assetsUrl; ?>images/apsher.png" alt="Absher" class="h-16 object-contain" loading="lazy">
           </div>
 
           <!-- Left Side: Links & Hijri Date -->

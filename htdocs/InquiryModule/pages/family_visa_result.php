@@ -374,7 +374,7 @@ $logoPath = getInquiryAsset('images/waza.jpeg');
 
             <div class="header-center">
                 <div class="basmala">﷽</div>
-                <img src="<?php echo $logoPath; ?>" alt="Logo" class="logo">
+                <img src="<?php echo $logoPath; ?>" alt="Logo" class="logo" loading="lazy">
                 <div class="permit-wrapper">
                     <div class="permit-highlight">تصريح زيارة</div>
                     <div class="no-print" style="margin-top: 5px;">

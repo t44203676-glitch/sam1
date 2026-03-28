@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 مارس 2026 الساعة 13:35
+-- Generation Time: 27 مارس 2026 الساعة 21:58
 -- إصدار الخادم: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -66,6 +66,14 @@ CREATE TABLE `business_visits` (
   `expiry_date` date DEFAULT NULL,
   `locked_by_user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `business_visits`
+--
+
+INSERT INTO `business_visits` (`id`, `serial_number`, `export_number`, `applicant_name`, `national_id`, `status`, `is_locked`, `created_by_user_id`, `rejection_reason`, `created_at`, `updated_at`, `printed_count`, `profile_photo_path`, `phone`, `nationality`, `arrival_place`, `service_number`, `service_desc`, `approval_date`, `approval_time`, `attachments`, `record_number`, `issuance_number`, `remarks`, `issuing_authority`, `hijri_date`, `valid_from`, `valid_to`, `visa_no`, `issue_date`, `valid_until`, `duration_of_stay`, `visa_type`, `entry_type`, `visa_residence_no`, `expiry_date`, `locked_by_user_id`) VALUES
+(3, '7220613104', '373286901534', 'سمير علي محمد علي محمد', '102345678', 'قيد المراجعة', 0, 1, NULL, '2026-03-25 21:16:49', '2026-03-26 14:28:46', 0, 'photo_69c5429eb6fd5.jpg', '', NULL, NULL, '', '', NULL, NULL, 0, '', '', NULL, 'وزارة الداخلية-الي', '', NULL, NULL, '5886908555', '2026-03-26', '2026-05-26', '90 يوم', 'زياره تجاريه', 'متعدد', '2356841368', '2026-03-26', NULL),
+(4, '1725478542', '335403928804', 'سمير علي محمد علي محمد', '9685374776', 'تمت الموافقة', 0, 1, NULL, '2026-03-26 14:31:27', '2026-03-27 17:50:53', 0, 'photo_69c6c37db99dd.jpg', '', NULL, NULL, '', '', NULL, NULL, 0, '', '', NULL, 'وزارة الداخلية-الي', '', NULL, NULL, '5886908555', '1447-10-01', '2021-12-03', '90 يوم', 'زيارة سياحية', '7', '45633456346', '2021-12-03', NULL);
 
 -- --------------------------------------------------------
 
@@ -1317,7 +1325,9 @@ CREATE TABLE `civil_affairs_requests` (
 --
 
 INSERT INTO `civil_affairs_requests` (`id`, `serial_number`, `export_number`, `applicant_name`, `national_id`, `phone`, `transaction_number`, `nationality`, `issue_date`, `issuing_authority`, `status`, `is_locked`, `created_by_user_id`, `rejection_reason`, `created_at`, `updated_at`, `printed_count`, `profile_photo_path`, `locked_by_user_id`) VALUES
-(5, '9128670385', '19001283003', 'jsdfh h h h', '76867576576', '0568657865', '785765876', 'جزر أولاند', '1447-10-08', 'وزارة الداخلية - الأحوال المدنية', 'قيد المراجعة', 0, 1, NULL, '2026-03-25 19:57:17', '2026-03-26 22:27:08', 0, 'uploads/profile_5_1774468659.png', NULL);
+(5, '9128670385', '19001283003', 'jsdfh h h h', '76867576576', '0568657865', '785765876', 'جزر أولاند', '1447-10-08', 'وزارة الداخلية - الأحوال المدنية', 'قيد المراجعة', 0, 1, NULL, '2026-03-25 19:57:17', '2026-03-25 19:57:39', 0, 'profile_5_1774468659.png', NULL),
+(6, '5494336731', '19001340991', 'JDSFKAS SAKDJFN  KAJSDFN Ksjdnf', '9685374776537', '0546346345', '24352345235', 'جزر أولاند', '1447-10-01', 'وزارة الداخلية - الأحوال المدنية', 'قيد المراجعة', 0, 1, NULL, '2026-03-25 21:06:06', '2026-03-25 21:06:28', 0, 'profile_6_1774472788.jpg', NULL),
+(7, '9587396292', '19009192579', 'سمير علي محمد علي محمد', '1023456789', '0556940185', '1190046836', 'مصر', '1447-10-13', 'وزارة الداخلية - الأحوال المدنية', 'تمت الموافقة', 0, 1, NULL, '2026-03-25 21:11:42', '2026-03-26 16:34:19', 0, 'photo_69c5600c298e9.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -1586,7 +1596,7 @@ CREATE TABLE `family_visits` (
 INSERT INTO `family_visits` (`id`, `serial_number`, `export_number`, `applicant_name`, `national_id`, `status`, `is_locked`, `created_by_user_id`, `rejection_reason`, `created_at`, `updated_at`, `printed_count`, `phone`, `nationality`, `arrival_place`, `service_number`, `service_desc`, `approval_date`, `approval_time`, `attachments`, `record_number`, `issuance_number`, `remarks`, `issuing_authority`, `hijri_date`, `sponsor_name`, `sponsor_id`, `emirate`, `locked_by_user_id`) VALUES
 (2, '8932433410', '187991098049', 'احمد علي ع ا', '236525245134', 'بانتظار موافقة المدير', 0, 12, NULL, '2026-03-24 21:33:42', '2026-03-25 09:15:21', 0, '0566876876', 'جزر أولاند', 'أندرا براديش', '76876786', '', NULL, NULL, 0, '3242314342', '', NULL, 'وزارة الداخلية-الي', '1447-10-01', NULL, NULL, 'إمارة منطقة نجران', NULL),
 (3, '6068904019', '168781603660', 'jsdfhب ب ب ب', '423534523', 'قيد المراجعة', 0, 1, NULL, '2026-03-25 20:00:08', '2026-03-25 20:00:08', 0, '0534563456', 'ألبانيا', 'أروناتشال براديش', '74657537543', '', NULL, NULL, 0, '3452345352', '', NULL, 'وزارة الداخلية-الي', '1447-10-01', NULL, NULL, 'إمارة منطقة الجوف', NULL),
-(4, '2130699925', '110994828279', 'jsdfhا ا ا ا', '10', 'قيد المراجعة', 0, 14, NULL, '2026-03-26 07:43:49', '2026-03-26 07:43:49', 0, '0575877665', 'ألبانيا', 'جزر أندامان ونيكوبار', '74657537543', '', NULL, NULL, 0, '3452345352', '', NULL, 'وزارة الداخلية-الي', '1447-10-01', NULL, NULL, 'إمارة منطقة الجوف', NULL);
+(4, '1403924740', '173527095352', 'سمير علي محمد علي محمد', '1023456789', 'تمت الموافقة', 0, 1, NULL, '2026-03-25 21:19:30', '2026-03-25 22:28:15', 0, '0556940185', 'ألبانيا', 'أندرا براديش', '1190068588', '', NULL, NULL, 0, '10598888788', '', NULL, 'وزارة الداخلية-الي', '1447-10-14', NULL, NULL, 'إمارة منطقة الرياض', NULL);
 
 -- --------------------------------------------------------
 
@@ -1681,9 +1691,7 @@ CREATE TABLE `labor_requests` (
 --
 
 INSERT INTO `labor_requests` (`id`, `serial_number`, `export_number`, `emirate`, `hijri_date`, `issuance_number`, `national_id`, `applicant_name`, `establishment_name`, `owner_name`, `record_number`, `status`, `is_locked`, `created_by_user_id`, `rejection_reason`, `created_at`, `updated_at`, `printed_count`, `locked_by_user_id`) VALUES
-(5, '75993298367', '4924613853', 'مكتب عمل منطقة حائل', '1447-09-07', '32232', '8753457659', 'مؤسسة احمد صالح محمد', 'مؤسسة احمد صالح محمد', 'علي صالح', '3452', 'تمت الموافقة', 0, 9, NULL, '2026-03-23 21:00:00', '2026-03-24 17:19:31', 0, 1),
-(7, '6502851180', '4658225356', 'مكتب عمل منطقة الرياض', '1447-10-07', '3454532432', '1234234342', 'g g g g', 'g g g g', 'g g g g', '7868684353', 'قيد المراجعة', 0, 14, NULL, '2026-03-26 12:38:49', '2026-03-26 12:38:49', 0, NULL),
-(8, '3319193977', '4866623332', 'مكتب عمل منطقة الرياض', '1447-08-04', '3454532432', '1034253453', 'تسايشن', 'تسايشن', 'HAV', '7868684353', 'قيد المراجعة', 0, 14, NULL, '2026-03-26 12:59:16', '2026-03-26 12:59:16', 0, NULL);
+(5, '75993298367', '4924613853', 'مكتب عمل منطقة حائل', '1447-09-07', '32232', '8753457659', 'مؤسسة احمد صالح محمد', 'مؤسسة احمد صالح محمد', 'علي صالح', '3452', 'تمت الموافقة', 0, 9, NULL, '2026-03-23 21:00:00', '2026-03-24 17:19:31', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1727,7 +1735,14 @@ CREATE TABLE `marriage_permits` (
 INSERT INTO `marriage_permits` (`id`, `serial_number`, `export_number`, `permit_type`, `applicant_name`, `national_id`, `status`, `is_locked`, `created_by_user_id`, `rejection_reason`, `created_at`, `updated_at`, `printed_count`, `phone`, `service_number`, `emirate`, `approval_date`, `record_number`, `issuance_number`, `issuing_authority`, `bank_file_number`, `service_desc`, `submission_date`, `area`, `area_code`, `locked_by_user_id`) VALUES
 (5, '1731053724', '0636226607', 'زواج سعودية من اجنبي مواليد السعودية', 'hpl] ugd ugd ugd', '1231231234', 'تم تعليق المعاملة', 1, 12, NULL, '2026-03-24 17:17:31', '2026-03-24 19:05:30', 0, '7836587236452', '', 'إمارة منطقة تبوك', '1447-09-15', '786', '', 'وزارة الداخلية-الي', 0, '', NULL, '', '', 1),
 (6, '1174560833', '0242063328', 'زواج سعودي من اجنبية داخل الاراضي السعودية مواليد خارج السعودية', 'احمد علي محمد علي', '6758764765', 'بانتظار موافقة المدير', 0, 12, NULL, '2026-03-24 20:22:28', '2026-03-25 09:58:40', 0, '0576564436', '', 'إمارة منطقة تبوك', '1447-09-15', '3242314342', NULL, 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL),
-(10, '6627079107', '0009771694', 'زواج سعودية من اجنبي مواليد السعودية', 'jsdfh ق ق ق', '3543534534', 'قيد المراجعة', 0, 14, NULL, '2026-03-26 09:02:23', '2026-03-26 09:02:23', 0, '0563454534534', '', 'إمارة منطقة الرياض', '1447-08-10', '10598888788', '', 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL);
+(10, '3376566729', '0026478215', 'زواج سعودي من اجنبية داخل الاراضي السعودية مواليد خارج السعودية', 'محمد بن سعود بن مسفر العبدالله', '1023456789', 'تمت الموافقة', 0, 1, NULL, '2026-03-25 23:51:32', '2026-03-25 23:57:50', 0, '0556940185', '', 'إمارة منطقة الرياض', '1447-10-06', '10598888788', '', 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL),
+(11, '8376206535', '0873764058', 'زواج سعودية من اجنبي داخل الاراضي السعودية مواليد خارج السعودية', 'بدالرحمن بن راشد بن صفيان', '1030135758', 'قيد المراجعة', 0, 18, NULL, '2026-03-26 01:01:11', '2026-03-27 16:29:40', 0, '05288489088', '', 'إمارة منطقة الرياض', '1447-10-27', '1030135758', NULL, 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL),
+(12, '97572737479', '0690599949', 'زواج سعودي من اجنبية خارج الاراضي السعودية مواليد خارج السعودية', 'احمد  علي', '67468476532', 'جاري الاعتماد', 0, 19, NULL, '2026-03-27 16:34:45', '2026-03-27 17:10:47', 0, '0556476543', '', 'إمارة منطقة سي', '3234-02-04', '10301353424', '2342342342', 'وزارة الداخلية-الي', 234242, '', NULL, '', '', NULL),
+(13, '6951532959', '0794936555', 'زواج سعودية من اجنبي مواليد السعودية', 'jsdfh ق ق ق', '6746847653', 'قيد المراجعة', 0, 1, NULL, '2026-03-27 18:36:42', '2026-03-27 18:36:42', 0, '0563545345', '', 'إمارة منطقة الرياض', '1447-08-10', '1059888788', '', 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL),
+(14, '6941521272', '0110533802', 'زواج سعودي من اجنبية داخل الاراضي السعودية مواليد خارج السعودية', 'jsdfh ق ق ق', '6046847653', 'قيد المراجعة', 0, 1, NULL, '2026-03-27 19:16:02', '2026-03-27 19:16:02', 0, '0563545345', '', 'إمارة منطقة الرياض', '1447-10-12', '1059888788', '', 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL),
+(15, '8607396929', '0616451097', 'زواج سعودية من اجنبي مواليد السعودية', 'ا', '1023486789', 'قيد المراجعة', 0, 1, NULL, '2026-03-27 19:27:53', '2026-03-27 19:27:53', 0, '0563434534', '', 'إمارة منطقة الرياض', '1447-08-10', '1059888788', '', 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL),
+(16, '7063509729', '0047081674', 'زواج سعودي من اجنبية مواليد السعودية', 'محمد بن سعود بن سعيد', '1052365421', 'تمت الموافقة', 0, 1, NULL, '2026-03-27 19:31:36', '2026-03-27 19:48:40', 0, '0556940185', '', 'إمارة منطقة الرياض', '1447-10-07', '1059888878', '', 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL),
+(17, '8412458307', '0391154749', 'زواج سعودية من اجنبي داخل الاراضي السعودية مواليد خارج السعودية', 'ا', '1023486780', 'تمت الموافقة', 0, 1, NULL, '2026-03-27 19:41:20', '2026-03-27 19:49:03', 0, '0556980185', '', 'إمارة منطقة الرياض', '1447-10-20', '7363782892', '', 'وزارة الداخلية-الي', 0, '', NULL, '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -1804,19 +1819,38 @@ INSERT INTO `query_logs` (`id`, `national_id`, `export_number`, `service_type`, 
 (2, '2435625', '0720293641', 'تصريح زواج', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-25 16:14:23'),
 (3, '2435625', '0720293641', 'تصريح زواج', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-25 16:22:15'),
 (4, '2435625', '0720293641', 'تصريح زواج', 'print', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-25 16:22:17'),
-(5, '76867576576', '19001283003', 'أحوال مدنية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:14:26'),
-(6, '423534523', '168781603660', 'زيارة عائلية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:15:16'),
-(7, '76867576576', '19001283003', 'أحوال مدنية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:20:36'),
-(8, '76867576576', '19001283003', 'أحوال مدنية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:21:36'),
-(9, '76867576576', '19001283003', 'أحوال مدنية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:21:50'),
-(10, '423534523', '168781603660', 'زيارة عائلية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:22:22'),
-(11, '52345234', '2422689409', 'زيارة سياحية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 15:27:48'),
-(12, '423534523', '168781603660', 'زيارة عائلية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 16:42:41'),
-(13, '52345234', '2422689409', 'زيارة سياحية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 16:43:13'),
-(14, '423534523', '168781603660', 'زيارة عائلية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 20:55:55'),
-(15, '52345234', '2422689409', 'زيارة سياحية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 20:58:36'),
-(16, '3543534534', '2990827079', 'زيارة سياحية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 21:00:37'),
-(17, '3543534534', '2990827079', 'زيارة سياحية', 'query', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 22:39:41');
+(5, '9685374776537', '19001340991', 'أحوال مدنية', 'query', '209.198.132.167', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-25 21:14:24'),
+(6, '1023456789', '0026478215', 'تصريح زواج', 'query', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:57:11'),
+(7, '1023456789', '0026478215', 'تصريح زواج', 'query', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:58:16'),
+(8, '1023456789', '0026478215', 'تصريح زواج', 'query', '150.228.11.72', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 00:22:32'),
+(9, '1023456789', '0026478215', 'تصريح زواج', 'query', '109.82.71.98', 'Mozilla/5.0 (Linux; Android 12; SAMSUNG SM-A125F) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/23.0 Chrome/115.0.0.0 Mobile Safari/537.36', '2026-03-26 00:24:18'),
+(10, '1023456789', '0026478215', 'تصريح زواج', 'query', '150.228.11.72', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 00:25:07'),
+(11, '1030135758', '0873764058', 'تصريح زواج', 'query', '209.198.132.152', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 01:13:22'),
+(12, '1030135758', '0873764058', 'تصريح زواج', 'query', '209.198.132.152', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 01:13:55'),
+(13, '1030135758', '0873764058', 'تصريح زواج', 'query', '109.82.71.98', 'Mozilla/5.0 (Linux; Android 12; SAMSUNG SM-A125F) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/23.0 Chrome/115.0.0.0 Mobile Safari/537.36', '2026-03-26 01:14:10'),
+(14, '1030135758', '0873764058', 'تصريح زواج', 'query', '212.105.142.132', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 06:24:12'),
+(15, '1023456789', '0026478215', 'تصريح زواج', 'query', '212.105.142.132', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 06:25:27'),
+(16, '1023456789', '173527095352', 'زيارة عائلية', 'query', '212.105.142.132', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 06:28:31'),
+(17, '102345678', '373286901534', 'زيارة تجارية', 'query', '212.105.142.132', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 06:29:00'),
+(18, '1030135758', '0873764058', 'تصريح زواج', 'query', '185.80.45.193', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 11:12:06'),
+(19, '1030135758', '0873764058', 'تصريح زواج', 'query', '185.80.45.193', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 11:16:20'),
+(20, '1030135758', '0873764058', 'تصريح زواج', 'query', '185.80.45.193', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 11:19:02'),
+(21, '1030135758', '0873764058', 'تصريح زواج', 'query', '185.80.45.193', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 11:19:48'),
+(22, '1030135758', '0873764058', 'تصريح زواج', 'query', '150.228.11.223', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/29.0 Chrome/136.0.0.0 Mobile Safari/537.36', '2026-03-26 13:22:42'),
+(23, '1030135758', '0873764058', 'تصريح زواج', 'query', '150.228.11.72', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 13:42:17'),
+(24, '1023456789', '173527095352', 'زيارة عائلية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 14:47:44'),
+(25, '9685374776', '335403928804', 'زيارة تجارية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 14:48:24'),
+(26, '9685374776', '335403928804', 'زيارة تجارية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 15:25:00'),
+(27, '9685374776', '335403928804', 'زيارة تجارية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 15:26:18'),
+(28, '52345234', '2422689409', 'زيارة سياحية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 15:51:15'),
+(29, '423534523', '168781603660', 'زيارة عائلية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 16:06:45'),
+(30, '52345234', '2422689409', 'زيارة سياحية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 16:07:42'),
+(31, '9685374776', '335403928804', 'زيارة تجارية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 16:33:17'),
+(32, '1023456789', '19009192579', 'أحوال مدنية', 'query', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 16:35:33'),
+(33, '1030135758', '0873764058', 'تصريح زواج', 'query', '150.228.11.72', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 16:40:03'),
+(34, '1030135758', '0873764058', 'تصريح زواج', 'query', '209.198.132.169', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 12:08:02'),
+(35, '1030135758', '0873764058', 'تصريح زواج', 'query', '209.198.132.169', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 12:08:48'),
+(36, '1030135758', '0873764058', 'تصريح زواج', 'query', '209.198.132.169', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 12:13:37');
 
 -- --------------------------------------------------------
 
@@ -1941,10 +1975,59 @@ INSERT INTO `related_data` (`id`, `full_name`, `national_id`, `passport_number`,
 (46, 'فادية محمد قاسم', NULL, '3245243532', NULL, NULL, 'زوجة', 'أفغانستان', 'جزر أندامان ونيكوبار', NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-25 12:48:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'تمت الموافقة', 'زواج سعودية من اجنبي مواليد السعودية', NULL),
 (47, NULL, NULL, NULL, NULL, NULL, 'dsfa', '', NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, '2026-03-25 19:57:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'إلى تاريخ غير محدد', 'جاهز', NULL, NULL),
 (48, 'اليين', NULL, '3423454252', 'sdfas', '32', 'عامل', 'أفغانستان', 'جزر أندامان ونيكوبار', NULL, NULL, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-25 20:00:45', '43', '43', 'زيارة عائلية', '6', NULL, '43535232', '1447-10-08', '2026-12-03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(49, 'ghjdgf dkghgdjgf ,ghdkhg', NULL, '3452345', NULL, NULL, 'hgsjf', 'ألبانيا', 'أندرا براديش', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-26 09:02:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'زواج سعودي من اجنبية مواليد السعودية', NULL),
-(50, NULL, NULL, NULL, NULL, NULL, 'hgsjf', 'أفغانستان', 'أندرا براديش', NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL, NULL, NULL, '2026-03-26 12:39:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(51, NULL, NULL, NULL, NULL, NULL, 'عامل', 'بيلاروسيا', 'جزر أندامان ونيكوبار', NULL, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, '2026-03-26 12:59:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(52, 'ghjdgf dkghgdjgf ,ghdkhg', NULL, '834767465', NULL, NULL, '', 'جزر أولاند', 'أندرا براديش', '2003-12-19', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, '2026-03-26 21:00:02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(49, NULL, NULL, NULL, NULL, NULL, 'fgd', '', NULL, NULL, NULL, NULL, NULL, NULL, 6, NULL, NULL, NULL, NULL, '2026-03-25 21:06:38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'إلى تاريخ غير محدد', 'بانتظار موافقة المدير', NULL, NULL),
+(50, NULL, NULL, NULL, NULL, NULL, 'مهندس', '', NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL, NULL, NULL, NULL, '2026-03-25 21:12:39', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'إلى تاريخ غير محدد', 'تمت الموافقة', NULL, NULL),
+(51, 'صفية زغلول العتيبي', NULL, 'A23588777', NULL, NULL, '', 'ألبانيا', 'أندرا براديش', '2002-02-02', NULL, NULL, NULL, 3, NULL, NULL, NULL, NULL, NULL, '2026-03-25 21:17:33', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'قيد المراجعة', NULL, NULL),
+(52, 'صفوان فيصل احمد خالد', NULL, 'A23588777', NULL, NULL, 'زوجة مواطن', 'جزر أولاند', 'أروناتشال براديش', NULL, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-25 23:52:14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'تمت الموافقة', 'زواج سعودية من اجنبي داخل الاراضي السعودية مواليد خارج السعودية', NULL),
+(53, 'رحاب عبدالعال محمد حسن111', NULL, 'A3755920911', NULL, NULL, 'زو00جة مواطن', 'مjصر', 'القاهرةu', NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-26 01:04:37', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'تمت الموافقة', 'زواج سعودي من اجنبية مواليد السعودية', NULL),
+(54, 'احمد محمد صادق', NULL, '1234dsd232', NULL, NULL, '', 'أفغانستان', 'جزر أندامان ونيكوبار', '2003-12-19', NULL, NULL, NULL, 4, NULL, NULL, NULL, NULL, NULL, '2026-03-26 14:33:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'تمت الموافقة', NULL, NULL),
+(55, 'تياسن', NULL, '6776876', NULL, NULL, 'الطالب', 'جزر أولاند', 'أندرا براديش', NULL, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-27 16:34:57', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'جاري الاعتماد', 'زواج سعودي من اجنبية خارج الاراضي السعودية مواليد خارج السعودية', NULL),
+(56, 'يبشسب', NULL, '23452345', NULL, NULL, 'شسيبشسيب', 'سيبلسيبل', 'سلسيبلس', NULL, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-27 17:11:15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(58, 'ghjdgf dkghgdjgf ,ghdkhg', NULL, '3452345', NULL, NULL, 'hgsjf', 'ألبانيا', 'أروناتشال براديش', NULL, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-27 19:23:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(59, 'ghjdgf dkghgdjgf ,ghdkhg', NULL, '3452345', NULL, NULL, 'hgsjf', 'أفغانستان', 'جزر أندامان ونيكوبار', NULL, 15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-27 19:28:16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(60, 'صفية زغلول العتيبي', NULL, '23307001172', NULL, NULL, 'زوجة مواطن', 'أفغانستان', 'بيهار', NULL, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-03-27 19:32:02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'تمت الموافقة', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `request_edits_log`
+--
+
+CREATE TABLE `request_edits_log` (
+  `id` int(11) NOT NULL,
+  `request_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `source_table` varchar(50) NOT NULL,
+  `field_name` varchar(100) NOT NULL,
+  `old_value` text DEFAULT NULL,
+  `new_value` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `request_edits_log`
+--
+
+INSERT INTO `request_edits_log` (`id`, `request_id`, `user_id`, `source_table`, `field_name`, `old_value`, `new_value`, `created_at`) VALUES
+(1, 11, 14, 'marriage_permits', 'permit_type', 'زواج سعودي من اجنبية مواليد السعودية', 'زواج سعودية من اجنبي داخل الاراضي السعودية مواليد خارج السعودية', '2026-03-27 16:29:40'),
+(2, 11, 14, 'marriage_permits', 'applicant_name', 'عادل بن عبدالرحمن بن راشد بن صفيان', 'بدالرحمن بن راشد بن صفيان', '2026-03-27 16:29:40'),
+(3, 11, 14, 'marriage_permits', 'phone', '0528848668', '05288489088', '2026-03-27 16:29:40'),
+(4, 11, 14, 'marriage_permits', 'approval_date', '1447-10-08', '1447-10-27', '2026-03-27 16:29:40'),
+(5, 12, 19, 'marriage_permits', 'status', 'تمت المراجعة', 'جاري الاعتماد', '2026-03-27 16:35:59'),
+(6, 12, 19, 'marriage_permits', 'serial_number', '9757273762', '975727378797', '2026-03-27 16:35:59'),
+(7, 12, 19, 'marriage_permits', 'permit_type', 'زواج سعودي من اجنبية داخل الاراضي السعودية مواليد خارج السعودية', 'زواج سعودي من اجنبية مواليد السعودية', '2026-03-27 16:35:59'),
+(8, 12, 19, 'marriage_permits', 'export_number', '0690569949', '0690599949', '2026-03-27 16:35:59'),
+(9, 12, 19, 'marriage_permits', 'applicant_name', 'احمد محمد علي خالد', 'احمد  علي خالد', '2026-03-27 16:35:59'),
+(10, 12, 19, 'marriage_permits', 'serial_number', '97572737879', '97572737479', '2026-03-27 17:10:47'),
+(11, 12, 19, 'marriage_permits', 'permit_type', 'زواج سعودي من اجنبية مواليد السعودية', 'زواج سعودي من اجنبية خارج الاراضي السعودية مواليد خارج السعودية', '2026-03-27 17:10:47'),
+(12, 12, 19, 'marriage_permits', 'applicant_name', 'احمد  علي خالد', 'احمد  علي', '2026-03-27 17:10:47'),
+(13, 12, 19, 'marriage_permits', 'national_id', '6746847654', '67468476532', '2026-03-27 17:10:47'),
+(14, 12, 19, 'marriage_permits', 'phone', '0556476546', '0556476543', '2026-03-27 17:10:47'),
+(15, 12, 19, 'marriage_permits', 'emirate', 'إمارة منطقة جازان', 'إمارة منطقة سي', '2026-03-27 17:10:47'),
+(16, 12, 19, 'marriage_permits', 'approval_date', '1447-10-19', '3234-02-04', '2026-03-27 17:10:47'),
+(17, 12, 19, 'marriage_permits', 'record_number', '1030135758', '10301353424', '2026-03-27 17:10:47'),
+(18, 12, 19, 'marriage_permits', 'bank_file_number', '0', '234242', '2026-03-27 17:10:47'),
+(19, 12, 19, 'marriage_permits', 'issuance_number', '', '2342342342', '2026-03-27 17:10:47');
 
 -- --------------------------------------------------------
 
@@ -2009,13 +2092,18 @@ CREATE TABLE `system_users` (
 --
 
 INSERT INTO `system_users` (`user_id`, `username`, `password`, `user_type`, `manager_id`, `created_by_user_id`, `is_banned`, `created_at`, `login_count`, `last_login`, `last_ip`) VALUES
-(1, 'root@admin.com', 'root123', 'Root', NULL, 1, 0, '2026-03-18 21:42:40', 21, '2026-03-26 18:26:56', '::1'),
-(3, 'so', 'soso', 'موظف', NULL, 1, 0, '2026-03-18 22:01:03', 1, '2026-03-23 22:50:24', '::1'),
+(1, 'root@admin.com', 'root123', 'Root', NULL, 1, 0, '2026-03-18 21:42:40', 36, '2026-03-27 22:33:28', '192.168.0.101'),
+(3, 'so', 'soso', 'موظف', NULL, 1, 0, '2026-03-18 22:01:03', 2, '2026-03-25 16:44:42', '134.35.143.181'),
 (4, 'hom@g.com', '1234', 'موظف', NULL, 1, 0, '2026-03-18 22:34:44', 1, '2026-03-24 22:33:41', '::1'),
 (8, 'saber', '1234', 'موظف', NULL, 7, 0, '2026-03-19 18:28:21', 2, '2026-03-19 23:38:23', '::1'),
 (12, 'w', 'w', 'موظف', NULL, 9, 0, '2026-03-24 17:15:07', 3, '2026-03-25 11:45:59', '::1'),
-(13, 'admin', 'admin123', 'مدير', NULL, 1, 0, '2026-03-25 16:40:26', 1, '2026-03-26 09:39:07', '::1'),
-(14, 'so1', 'so1', 'Admin', NULL, 1, 0, '2026-03-26 06:40:14', 1, '2026-03-26 09:40:35', '::1');
+(13, 'admin', 'admin123', 'مدير', NULL, 1, 0, '2026-03-25 16:40:26', 0, NULL, NULL),
+(14, 'ابو سلمان ', 'abusalman412', 'Admin', NULL, 1, 0, '2026-03-25 21:35:50', 13, '2026-03-27 19:32:51', '::1'),
+(16, 'The loyal one @gmail.com', '778899@#', 'مدير', NULL, 14, 0, '2026-03-25 22:56:28', 1, '2026-03-26 04:51:53', '185.80.45.237'),
+(17, 'أبو نائف ', 'abunaaf123', 'Admin', NULL, 1, 0, '2026-03-25 23:22:42', 3, '2026-03-27 04:59:37', '46.35.80.6'),
+(18, 'Mukhtar@gmail.com', 'Mukhtar@#', 'مدير', NULL, 14, 0, '2026-03-26 00:33:03', 2, '2026-03-25 17:54:25', '109.82.71.98'),
+(19, 'محمد ', '9900@#', 'مدير', NULL, 14, 0, '2026-03-26 17:07:07', 3, '2026-03-27 19:34:08', '::1'),
+(20, 'ابو فارس ', 'abufares123', 'مدير', NULL, 1, 0, '2026-03-27 09:41:44', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2068,8 +2156,7 @@ CREATE TABLE `tourism_visits` (
 --
 
 INSERT INTO `tourism_visits` (`id`, `serial_number`, `export_number`, `applicant_name`, `national_id`, `status`, `is_locked`, `created_by_user_id`, `rejection_reason`, `created_at`, `updated_at`, `printed_count`, `profile_photo_path`, `phone`, `nationality`, `arrival_place`, `service_number`, `service_desc`, `approval_date`, `approval_time`, `attachments`, `record_number`, `issuance_number`, `remarks`, `issuing_authority`, `hijri_date`, `valid_from`, `valid_to`, `visa_no`, `issue_date`, `valid_until`, `duration_of_stay`, `visa_type`, `entry_type`, `visa_residence_no`, `expiry_date`, `locked_by_user_id`) VALUES
-(3, '8231128930', '2422689409', 'احمد علي سيب س', '52345234', 'بانتظار موافقة المدير', 0, 12, NULL, '2026-03-24 21:35:40', '2026-03-26 22:27:08', 0, 'uploads/profile_3_1774388159.jpg', '', NULL, NULL, '', '', NULL, NULL, 0, '', '', NULL, 'وزارة الداخلية-الي', '', NULL, NULL, '7326482345', '2026-03-17', '2026-03-26', '54', 'زيارة سياحية', '1', '2345245', '2026-04-07', NULL),
-(5, '6061054817', '2990827079', 'jsdfh ق ق ق', '3543534534', 'قيد المراجعة', 0, 1, NULL, '2026-03-26 20:59:17', '2026-03-26 22:38:46', 0, 'uploads/photo_69c5b576826e9.jpg', '', NULL, NULL, '', '', NULL, NULL, 0, '', '', NULL, 'وزارة الداخلية-الي', '', NULL, NULL, '43535232', '1447-10-08', '2021-12-03', '90 يوم', 'زيارة تجارية', '6', '84752835', '2021-12-03', NULL);
+(3, '8231128930', '2422689409', 'احمد علي سيب س', '52345234', 'بانتظار موافقة المدير', 0, 12, NULL, '2026-03-24 21:35:40', '2026-03-24 21:35:59', 0, 'profile_3_1774388159.jpg', '', NULL, NULL, '', '', NULL, NULL, 0, '', '', NULL, 'وزارة الداخلية-الي', '', NULL, NULL, '7326482345', '2026-03-17', '2026-03-26', '54', 'زيارة سياحية', '1', '2345245', '2026-04-07', NULL);
 
 -- --------------------------------------------------------
 
@@ -2116,11 +2203,47 @@ INSERT INTO `user_logs` (`log_id`, `user_id`, `action`, `ip_address`, `user_agen
 (44, 1, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-25 13:41:22'),
 (47, 1, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-25 15:20:07'),
 (48, 1, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-25 16:01:30'),
-(50, 13, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:39:07'),
-(51, 1, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:39:26'),
-(52, 14, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 06:40:35'),
-(53, 1, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 13:31:34'),
-(54, 1, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', '2026-03-26 15:26:56');
+(50, 1, 'login', '209.198.132.227', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 21:07:42'),
+(51, 1, 'login', '209.198.132.167', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 21:28:22'),
+(52, 14, 'login', '209.198.132.227', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 21:42:12'),
+(53, 14, 'login', '150.228.11.72', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 21:42:32'),
+(54, 1, 'login', '209.198.132.227', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 21:44:02'),
+(55, 14, 'login', '150.228.11.72', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-25 22:52:40'),
+(56, 14, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:40:14'),
+(57, 14, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:40:57'),
+(58, 1, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:42:49'),
+(59, 3, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:44:42'),
+(60, 14, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:45:31'),
+(61, 17, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:45:54'),
+(62, 14, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:47:47'),
+(63, 1, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:48:04'),
+(64, 1, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-25 23:48:57'),
+(65, 14, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 00:02:30'),
+(66, 1, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 00:09:23'),
+(67, 18, 'login', '150.228.11.72', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 00:54:11'),
+(68, 18, 'login', '109.82.71.98', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Mobile Safari/537.36', '2026-03-26 00:54:25'),
+(69, 14, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 00:55:29'),
+(70, 1, 'login', '134.35.143.181', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 00:59:56'),
+(71, 14, 'login', '212.105.142.132', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 06:52:16'),
+(72, 17, 'login', '212.105.142.144', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/29.0 Chrome/136.0.0.0 Mobile Safari/537.36', '2026-03-26 10:25:26'),
+(73, 16, 'login', '185.80.45.237', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/29.0 Chrome/136.0.0.0 Mobile Safari/537.36', '2026-03-26 11:51:53'),
+(74, 1, 'login', '31.31.180.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-26 14:25:41'),
+(75, 1, 'login', '46.35.81.59', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 18:32:10'),
+(76, 19, 'login', '46.35.81.59', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 18:54:47'),
+(77, 1, 'login', '46.35.81.59', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 19:03:32'),
+(78, 14, 'login', '185.80.46.228', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 19:45:51'),
+(79, 1, 'login', '46.35.81.59', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-26 21:01:47'),
+(80, 17, 'login', '46.35.80.6', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 11:59:37'),
+(81, 1, 'login', '46.35.80.6', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 12:00:29'),
+(82, 1, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-27 16:27:11'),
+(83, 14, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-27 16:28:51'),
+(84, 19, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-27 16:32:28'),
+(85, 14, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-27 16:32:51'),
+(86, 19, 'login', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', '2026-03-27 16:34:08'),
+(87, 1, 'login', '192.168.0.101', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 17:44:53'),
+(88, 1, 'login', '192.168.0.101', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 17:47:37'),
+(89, 1, 'login', '192.168.0.101', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 19:28:42'),
+(90, 1, 'login', '192.168.0.101', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36', '2026-03-27 19:33:28');
 
 --
 -- Indexes for dumped tables
@@ -2224,6 +2347,14 @@ ALTER TABLE `related_data`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `request_edits_log`
+--
+ALTER TABLE `request_edits_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `request_id` (`request_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `runaway_cancellations`
 --
 ALTER TABLE `runaway_cancellations`
@@ -2262,7 +2393,7 @@ ALTER TABLE `user_logs`
 -- AUTO_INCREMENT for table `business_visits`
 --
 ALTER TABLE `business_visits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -2274,7 +2405,7 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `civil_affairs_requests`
 --
 ALTER TABLE `civil_affairs_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -2304,13 +2435,13 @@ ALTER TABLE `labor_inquiry`
 -- AUTO_INCREMENT for table `labor_requests`
 --
 ALTER TABLE `labor_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `marriage_permits`
 --
 ALTER TABLE `marriage_permits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `profession_changes`
@@ -2322,7 +2453,7 @@ ALTER TABLE `profession_changes`
 -- AUTO_INCREMENT for table `query_logs`
 --
 ALTER TABLE `query_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `recruitment_requests`
@@ -2334,7 +2465,13 @@ ALTER TABLE `recruitment_requests`
 -- AUTO_INCREMENT for table `related_data`
 --
 ALTER TABLE `related_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `request_edits_log`
+--
+ALTER TABLE `request_edits_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `runaway_cancellations`
@@ -2346,19 +2483,19 @@ ALTER TABLE `runaway_cancellations`
 -- AUTO_INCREMENT for table `system_users`
 --
 ALTER TABLE `system_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tourism_visits`
 --
 ALTER TABLE `tourism_visits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_logs`
 --
 ALTER TABLE `user_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- قيود الجداول المُلقاة.
@@ -2369,6 +2506,12 @@ ALTER TABLE `user_logs`
 --
 ALTER TABLE `cities`
   ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE CASCADE;
+
+--
+-- قيود الجداول `request_edits_log`
+--
+ALTER TABLE `request_edits_log`
+  ADD CONSTRAINT `fk_request_edits_user` FOREIGN KEY (`user_id`) REFERENCES `system_users` (`user_id`) ON DELETE CASCADE;
 
 --
 -- قيود الجداول `system_users`

@@ -4,6 +4,9 @@ if (!isset($_SESSION['user_type']) || ($_SESSION['user_type'] !== 'Root' && $_SE
     die('غير مصرح لك بالوصول.');
 }
 $current_section = $_GET['section'] ?? 'dashboard';
+
+// تحميل الستايلات في بداية الصفحة لتجنب مشكلة الـ FOUC (انزياح العناصر)
+require_once 'admin/shared/styles.php'; 
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -50,6 +53,11 @@ $current_section = $_GET['section'] ?? 'dashboard';
                     <li class="nav-item">
                         <a href="?admin=1&section=query_logs" class="nav-link <?php echo ($current_section === 'query_logs') ? 'active' : ''; ?>">
                             <i class="fas fa-history me-2"></i>سجل الاستعلامات
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?admin=1&section=system_audit" class="nav-link <?php echo ($current_section === 'system_audit') ? 'active' : ''; ?>">
+                            <i class="fas fa-shield-alt me-2"></i>سجل مراقبة النظام
                         </a>
                     </li>
                     <?php endif; ?>
@@ -163,6 +171,15 @@ $current_section = $_GET['section'] ?? 'dashboard';
             <?php elseif ($current_section === 'requests'): ?>
                 <!-- Global Requests -->
                 <?php
+                // Fetch edited fields for root
+                $edited_fields = [];
+                if ($_SESSION['user_type'] === 'Root') {
+                    $editsStmt = $pdo->query("SELECT request_id, field_name FROM request_edits_log");
+                    while($row = $editsStmt->fetch(PDO::FETCH_ASSOC)) {
+                        $edited_fields[$row['request_id']][] = $row['field_name'];
+                    }
+                }
+                
                 $services = [
                     'marriage_permits' => 'تصاريح الزواج',
                     'family_visits' => 'الزيارات العائلية',
@@ -242,9 +259,20 @@ $current_section = $_GET['section'] ?? 'dashboard';
                                         ?>
                                             <tr data-id="<?php echo $req['id']; ?>" data-source-table="<?php echo $req['source_table']; ?>" style="<?php echo $row_bg; ?>">
                                                 <td class="fw-bold text-muted"><?php echo $row_num; ?></td>
-                                                <td data-label="رقم الصادر" class="small" data-field="export_number"><?php echo htmlspecialchars(toWesternDigits($req['export_number'] ?? '---')); ?></td>
-                                                <td data-label="اسم مقدم الطلب" class="fw-bold" data-field="applicant_name"><?php echo htmlspecialchars($req['applicant_name'] ?? '---'); ?></td>
-                                                <td data-label="رقم الهوية" class="small" data-field="national_id"><?php echo htmlspecialchars(toWesternDigits($req['national_id'] ?? '---')); ?></td>
+                                                <?php
+                                                    $is_mod = isset($edited_fields[$req['id']]) && $_SESSION['user_type'] === 'Root';
+                                                    $mod_fields = $is_mod ? $edited_fields[$req['id']] : [];
+                                                    $export_style = in_array('export_number', $mod_fields) ? 'color:#dc3545 !important; font-weight:900;' : '';
+                                                    $name_style = in_array('applicant_name', $mod_fields) ? 'color:#dc3545 !important; font-weight:900;' : '';
+                                                    $id_style = in_array('national_id', $mod_fields) ? 'color:#dc3545 !important; font-weight:900;' : '';
+                                                    $row_tooltip = $is_mod ? 'title="تم تعديل هذا الطلب"' : '';
+                                                ?>
+                                                <td data-label="رقم الصادر" class="small" data-field="export_number" style="<?php echo $export_style; ?>"><?php echo htmlspecialchars(toWesternDigits($req['export_number'] ?? '---')); ?></td>
+                                                <td data-label="اسم مقدم الطلب" class="fw-bold" data-field="applicant_name" style="<?php echo $name_style; ?>">
+                                                    <?php echo htmlspecialchars($req['applicant_name'] ?? '---'); ?>
+                                                    <?php if($is_mod): ?> <span class="badge bg-danger ms-1" style="font-size:0.65rem;" <?php echo $row_tooltip; ?>><i class="fas fa-pen"></i></span> <?php endif; ?>
+                                                </td>
+                                                <td data-label="رقم الهوية" class="small" data-field="national_id" style="<?php echo $id_style; ?>"><?php echo htmlspecialchars(toWesternDigits($req['national_id'] ?? '---')); ?></td>
                                                 <td data-label="نوع الطلب" class="small"><?php echo $display_service; ?></td>
                                                 <td data-label="بواسطة" class="small text-muted"><?php echo htmlspecialchars($creator_name); ?></td>
                                                 <td data-label="التاريخ" class="small" data-field="created_at"><?php echo $date_str; ?></td>
@@ -341,12 +369,13 @@ $current_section = $_GET['section'] ?? 'dashboard';
                 </style>
             <?php elseif ($current_section === 'query_logs' && $_SESSION['user_type'] === 'Root'): ?>
                 <?php require_once 'views/query_logs.php'; ?>
+            <?php elseif ($current_section === 'system_audit' && $_SESSION['user_type'] === 'Root'): ?>
+                <?php require_once 'admin/root/system_audit.php'; ?>
             <?php endif; ?>
         </main>
     </div>
 </div>
 
 <?php 
-require_once 'admin/shared/styles.php'; 
 require_once 'admin/shared/scripts.php';
 ?>

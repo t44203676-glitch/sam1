@@ -33,10 +33,10 @@
             <div class="flex items-center gap-3 order-2 md:order-1 justify-start mt-2 no-print">
                 <span class="text-[#444444] text-sm">تحميل تطبيق أبشر</span>
                 <a href="#" class="hover:opacity-80 transition-opacity">
-                    <img src="<?php echo $assetsUrl; ?>images/ios.png" alt="App Store - أبشر" class="h-9 object-contain">
+                    <img src="<?php echo $assetsUrl; ?>images/ios.png" alt="App Store - أبشر" class="h-9 object-contain" loading="lazy">
                 </a>
                 <a href="#" class="hover:opacity-80 transition-opacity">
-                    <img src="<?php echo $assetsUrl; ?>images/android.png" alt="Google Play - أبشر" class="h-9 object-contain">
+                    <img src="<?php echo $assetsUrl; ?>images/android.png" alt="Google Play - أبشر" class="h-9 object-contain" loading="lazy">
                 </a>
             </div>
         </div>
@@ -49,7 +49,7 @@
             <!-- Center: NIC -->
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 text-gray-600 text-xs font-semibold whitespace-nowrap">
                  <div class="w-8 h-8 flex items-center justify-center">
-                    <img src="<?php echo $assetsUrl; ?>images/icon.jpeg" alt="NIC" class="w-full h-full object-contain rounded-full">
+                    <img src="<?php echo $assetsUrl; ?>images/icon.jpeg" alt="NIC" class="w-full h-full object-contain rounded-full" loading="lazy">
                  </div>
                   <span>تطوير وتشغيل مركز المعلومات الوطني</span>
              </div>

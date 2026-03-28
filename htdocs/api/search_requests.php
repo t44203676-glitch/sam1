@@ -21,15 +21,8 @@ try {
     $user_type = $_SESSION['user_type'] ?? null;
     $user_id = $_SESSION['user_id'] ?? null;
 
-    // Fetch all users to map created_by_user_id to email/username
+    // (Users map logic moved below the requests fetch for performance)
     $users_map = [];
-    $stmt_users = $pdo->query("SELECT user_id, username, user_type FROM system_users");
-    while ($u = $stmt_users->fetch(PDO::FETCH_ASSOC)) {
-        $users_map[$u['user_id']] = [
-            'username' => $u['username'],
-            'user_type' => $u['user_type']
-        ];
-    }
 
     // Define service table names and their user-facing names
     // KEYS must match the 'service' GET parameter from the admin view
@@ -161,6 +154,20 @@ try {
         echo '<tr><td colspan="9" class="text-center">لا توجد طلبات تطابق معايير البحث.</td></tr>';
     }
     else {
+        // --- OPTIMIZATION: Fetch user names only for the records found ---
+        $creator_ids = array_unique(array_column($requests, 'created_by_user_id'));
+        if (!empty($creator_ids)) {
+            $placeholders = str_repeat('?,', count($creator_ids) - 1) . '?';
+            $stmt_users = $pdo->prepare("SELECT user_id, username, user_type FROM system_users WHERE user_id IN ($placeholders)");
+            $stmt_users->execute($creator_ids);
+            while ($u = $stmt_users->fetch(PDO::FETCH_ASSOC)) {
+                $users_map[$u['user_id']] = [
+                    'username' => $u['username'],
+                    'user_type' => $u['user_type']
+                ];
+            }
+        }
+        // -----------------------------------------------------------------
         $total_reqs = count($requests);
         // تلوين أول 3 صفوف (الأحدث) بالألوان الباهتة
         $last3_colors = [

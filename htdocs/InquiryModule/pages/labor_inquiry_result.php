@@ -306,7 +306,7 @@ td{
 <div class="header">
 
 <div class="logo-block">
-    <img id="ministry-logo" src="<?php echo getInquiryAsset('images/images2.ico'); ?>" alt="وزارة العمل" crossorigin="anonymous">
+    <img id="ministry-logo" src="<?php echo getInquiryAsset('images/images2.ico'); ?>" alt="وزارة العمل" crossorigin="anonymous" loading="lazy">
 </div>
 
 <div class="center-block" style="flex: 1; text-align: center; margin-top: 80px;">

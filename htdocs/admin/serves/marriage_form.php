@@ -40,16 +40,16 @@ $message = '';
 $formType = 'marriage';
 $currentStep = isset($_GET['step']) ? (int)$_GET['step'] : 1;
 
-$errors = [];
+// تهيئة المتغيرات إذا لم تكن موجودة بالفعل
+if (!isset($errors)) $errors = [];
+if (!isset($form_data)) $form_data = [];
 
-// استعادة بيانات النموذج والأخطاء من الجلسة في حالة حدوث خطأ في التحقق
-if (isset($_SESSION['form_data'])) {
+// استعادة بيانات النموذج والأخطاء من الجلسة
+if (empty($form_data) && isset($_SESSION['form_data'])) {
     $form_data = $_SESSION['form_data'];
-    unset($_SESSION['form_data']);
 }
-if (isset($_SESSION['form_errors'])) {
+if (empty($errors) && isset($_SESSION['form_errors'])) {
     $errors = $_SESSION['form_errors'];
-    unset($_SESSION['form_errors']);
 }
 
 $isEdit = (isset($mode) && $mode === 'edit');
@@ -294,15 +294,6 @@ elseif ($currentStep == 2): ?>
                     <?php render_form_group('رقم الجواز/ رقم الاقامة', 'passport_number', 'text', 'ادخل رقم الجواز أو الإقامة', $passportNumber); ?>
                     <?php render_form_group('فئة المهنة', 'job_category', 'text', 'ادخل فئة المهنة', $jobCategory); ?>
                     
-                    <div class="form-group">
-                        <label class="form-label">نوع التصريح</label>
-                        <select name="permit_type" class="form-select">
-                            <?php foreach ($permit_types_options as $val => $lbl): ?>
-                                <option value="<?php echo $val; ?>"><?php echo $lbl; ?></option>
-                            <?php
-    endforeach; ?>
-                        </select>
-                    </div>
 
                     <div class="form-group" style="position: relative;">
                         <label for="marriageNationalityInput" class="form-label">الجنسية</label>
@@ -340,38 +331,38 @@ elseif ($currentStep == 2): ?>
                     <table class="table table-bordered table-striped related-items-table table-responsive-stack">
                         <thead class="table-light">
                             <tr>
-                                <th>الاسم الكامل</th>
-                                <th>رقم الجواز/الإقامة</th>
-                                <th>فئة المهنة</th>
-                                <th>نوع التصريح</th>
-                                <th>الجنسية</th>
-                                <th>مكان القدوم</th>
-                                <th class="text-center">إجراءات</th>
+                                <th style="width: 25%;">الاسم الكامل</th>
+                                <th style="width: 20%;">رقم الجواز/الإقامة</th>
+                                <th style="width: 15%;">فئة المهنة</th>
+                                <th style="width: 15%;">الجنسية</th>
+                                <th style="width: 15%;">مكان القدوم</th>
+                                <th style="width: 10%;" class="text-center">إجراءات</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if (!empty($related_partners)): ?>
                                 <?php foreach ($related_partners as $partner): ?>
                                     <tr data-item-id="<?php echo $partner['id']; ?>" data-table="related_data">
-                                        <td data-field="full_name" data-label="الاسم الكامل"><?php echo htmlspecialchars($partner['full_name'] ?? '---'); ?></td>
-                                        <td data-field="passport_number" data-label="رقم الجواز/الإقامة"><?php echo htmlspecialchars($partner['passport_number'] ?? '---'); ?></td>
-                                        <td data-field="job_category" data-label="فئة المهنة"><?php echo htmlspecialchars($partner['job_category'] ?? '---'); ?></td>
-                                        <td data-field="permit_type" data-label="نوع التصريح"><?php echo htmlspecialchars($partner['permit_type'] ?? '---'); ?></td>
-                                        <td data-field="nationality" data-label="الجنسية"><?php echo htmlspecialchars($partner['nationality'] ?? '---'); ?></td>
-                                        <td data-field="country" data-label="مكان القدوم"><?php echo htmlspecialchars($partner['country'] ?? '---'); ?></td>
-                                        <td data-label="إجراءات" class="text-center">
+                                        <td data-label="الاسم الكامل"><?php echo htmlspecialchars($partner['full_name'] ?? '---'); ?></td>
+                                        <td data-label="رقم الجواز/الإقامة"><?php echo htmlspecialchars($partner['passport_number'] ?? '---'); ?></td>
+                                        <td data-label="فئة المهنة"><?php echo htmlspecialchars($partner['job_category'] ?? '---'); ?></td>
+                                        <td data-label="الجنسية"><?php echo htmlspecialchars($partner['nationality'] ?? '---'); ?></td>
+                                        <td data-label="مكان القدوم"><?php echo htmlspecialchars($partner['country'] ?? '---'); ?></td>
+                                        <td class="text-center">
                                             <?php $safeItemJson = htmlspecialchars(json_encode($partner), ENT_QUOTES, 'UTF-8'); ?>
-                                            <button type="button" class="btn btn-sm btn-outline-primary me-1" title="تعديل" onclick='populateFormForEdit(<?php echo $safeItemJson; ?>, "marriage")'>
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-outline-danger" title="حذف" onclick="deleteRelatedItem('marriage', '<?php echo htmlspecialchars($_GET['request_id'] ?? ($_POST['request_id'] ?? '')); ?>', <?php echo $partner['id']; ?>, this)">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-primary" title="تعديل" onclick='populateFormForEdit(<?php echo $safeItemJson; ?>, "marriage")'>
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger" title="حذف" onclick="deleteRelatedItem('marriage', '<?php echo htmlspecialchars($_GET['request_id'] ?? ($_POST['request_id'] ?? '')); ?>', <?php echo $partner['id']; ?>, this)">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <tr><td colspan="7" class="text-center placeholder-row">لا توجد بيانات مضافة</td></tr>
+                                <tr><td colspan="6" class="text-center placeholder-row">لا توجد بيانات مضافة</td></tr>
                             <?php endif; ?>
                         </tbody>
                     </table>

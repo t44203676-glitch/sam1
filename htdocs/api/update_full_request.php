@@ -87,8 +87,14 @@ try {
                 $stmtCols->execute();
                 $tableColumns = $stmtCols->fetchAll(PDO::FETCH_COLUMN);
 
+                // Fetch existing record to track edits
+                $stmtOld = $pdo->prepare("SELECT * FROM `$tableName` WHERE id = ?");
+                $stmtOld->execute([$requestId]);
+                $oldRecord = $stmtOld->fetch(PDO::FETCH_ASSOC);
+
                 $fields = [];
                 $params = [];
+                $editLogs = [];
 
                 // استبعاد الحقول الخاصة بالنظام والتي لا يجب تحديثها مباشرة من الـ POST
                 $excludedFields = ['id', 'table', 'partners_json', 'profile_photo_file', 'profile_photo_path'];
@@ -112,6 +118,16 @@ try {
                     // Convert numbers to Western digits before saving
                     if ($val !== null && ($key === 'national_id' || $key === 'export_number' || $key === 'service_number' || $key === 'issuance_number' || $key === 'record_number' || $key === 'sponsor_id' || $key === 'source_number' || $key === 'bank_file_number')) {
                         $val = toWesternDigits($val);
+                    }
+
+                    // Track changes for audit log
+                    $oldVal = $oldRecord[$key] ?? null;
+                    if ((string)$oldVal !== (string)$val) {
+                         $editLogs[] = [
+                             'field' => $key,
+                             'old' => (string)$oldVal,
+                             'new' => (string)$val
+                         ];
                     }
 
                     $params[] = $val;
@@ -142,6 +158,18 @@ try {
                     $stmt = $pdo->prepare($sql);
                     if (!$stmt->execute($params)) {
                         $errors[] = "فشل تحديث بيانات الطلب.";
+                    } else {
+                        // Insert audit logs
+                        if (!empty($editLogs)) {
+                            $user_id = $_SESSION['user_id'] ?? 0;
+                            $logSql = "INSERT INTO `request_edits_log` (`request_id`, `user_id`, `source_table`, `field_name`, `old_value`, `new_value`) VALUES (?, ?, ?, ?, ?, ?)";
+                            $logStmt = $pdo->prepare($logSql);
+                            foreach ($editLogs as $log) {
+                                // Don't log empty-to-empty or trivial changes if both are equivalent to empty
+                                if (empty(trim($log['old'])) && empty(trim($log['new']))) continue;
+                                $logStmt->execute([$requestId, $user_id, $tableName, $log['field'], $log['old'], $log['new']]);
+                            }
+                        }
                     }
                 }
 

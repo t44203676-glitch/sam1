@@ -317,7 +317,6 @@ async function fetchCountriesDataGlobal() {
         console.error("Error loading data files:", error);
     }
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     fetchCountriesDataGlobal();
 
@@ -325,4 +324,99 @@ document.addEventListener('DOMContentLoaded', () => {
     if (notificationContainer && notificationContainer.dataset.flashMessage) {
         showNotification(notificationContainer.dataset.flashMessage, notificationContainer.dataset.flashType || 'success');
     }
+
+    // Global listener for duplicate ID check
+    document.addEventListener('input', (e) => {
+        if (e.target && e.target.name === 'national_id') {
+            const val = e.target.value.replace(/[^0-9٠-٩]/g, '');
+            if (val.length === 10) {
+                const formElement = e.target.closest('form');
+                const formTypeInput = formElement ? formElement.querySelector('input[name="formType"]') : null;
+                const formType = formTypeInput ? formTypeInput.value : '';
+                
+                if (formType) {
+                    checkDuplicateID(val, formType, e.target);
+                }
+            } else if (val.length < 10) {
+                // Clear error and re-enable buttons if they delete digits
+                const feedbackElement = document.getElementById(e.target.id + '-feedback');
+                if (feedbackElement && feedbackElement.textContent.includes('موجود')) {
+                    e.target.classList.remove('is-invalid');
+                    e.target.style.borderColor = '';
+                    feedbackElement.textContent = '';
+                }
+            }
+        }
+    });
+
+    // Check again on blur to be sure
+    document.addEventListener('blur', (e) => {
+        if (e.target && e.target.name === 'national_id' && e.target.value.length === 10) {
+            const formElement = e.target.closest('form');
+            const formType = formElement?.querySelector('input[name="formType"]')?.value || '';
+            if (formType) {
+                checkDuplicateID(e.target.value, formType, e.target);
+            }
+        }
+    }, true);
+
+    // Prevent form submission if there are pending errors or duplicate IDs
+    document.addEventListener('submit', (e) => {
+        const nationalIdInput = e.target.querySelector('input[name="national_id"]');
+        if (nationalIdInput && nationalIdInput.classList.contains('is-invalid')) {
+            const feedback = document.getElementById(nationalIdInput.id + '-feedback');
+            if (feedback && feedback.textContent.includes('موجود')) {
+                e.preventDefault();
+                showNotification('لا يمكن الإرسال: رقم السجل مكرر في النظام', 'error');
+                nationalIdInput.focus();
+            }
+        }
+    });
 });
+
+
+/**
+ * Checks if a national ID is duplicate via AJAX
+ */
+async function checkDuplicateID(nationalId, formType, inputElement) {
+    if (!nationalId || nationalId.length < 10) return;
+    
+    const feedbackElement = document.getElementById(inputElement.id + '-feedback');
+    if (!feedbackElement) return;
+
+    // Set pending state to block navigation while checking
+    inputElement.dataset.checkingDuplicate = "true";
+
+    // Build the absolute API URL using the <base> tag if available
+    const baseTag = document.querySelector('base');
+    const baseUrl = baseTag ? baseTag.getAttribute('href') : '';
+    const apiPath = baseUrl + 'api/check_duplicate_id.php';
+
+    try {
+        const response = await fetch(`${apiPath}?national_id=${encodeURIComponent(nationalId)}&formType=${encodeURIComponent(formType)}`);
+        const data = await response.json();
+
+        if (data.exists) {
+            inputElement.classList.add('is-invalid');
+            inputElement.style.borderColor = '#dc3545';
+            feedbackElement.style.color = '#dc3545';
+            feedbackElement.textContent = data.message || 'رقم السجل موجود في النظام';
+        } else {
+            inputElement.classList.remove('is-invalid');
+            inputElement.style.borderColor = '';
+            feedbackElement.style.color = '';
+            
+            // Only clear if it was an "exists" error
+            if (feedbackElement.textContent.includes('موجود')) {
+                feedbackElement.textContent = '';
+            }
+        }
+    } catch (error) {
+        console.error('Error checking duplicate ID:', error);
+    } finally {
+        // Clear pending state
+        inputElement.dataset.checkingDuplicate = "false";
+    }
+}
+
+window.checkDuplicateID = checkDuplicateID;

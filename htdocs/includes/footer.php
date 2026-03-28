@@ -7,7 +7,7 @@ $footer_data = include __DIR__ . '/data_footer.php';
 <div class="footer row">
     <div class="row">
         <div class="foot-logo pull-left">
-            <img src="<?php echo BASE_URL; ?>images/moi_logo_rtl.png" alt="MOI Logo" style="height: 55px;">
+            <img src="<?php echo BASE_URL; ?>images/moi_logo_rtl.png" alt="MOI Logo" style="height: 55px;" loading="lazy">
         </div>
         <ul class="foot-links pull-left">
             <?php foreach ($footer_data['links'] as $link):
@@ -30,7 +30,7 @@ endforeach; ?>
                     <?php elseif ($app['img'] === 'images/android.png'): ?>
                         <svg width="120" height="35" viewBox="0 0 135 40" xmlns="http://www.w3.org/2000/svg" style="display:inline-block; vertical-align:middle;"><rect width="135" height="40" rx="5" fill="black"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="12">Google Play</text></svg>
                     <?php else: ?>
-                        <img src="<?php echo BASE_URL . $app['img']; ?>" class="<?php echo $app['class'] ?? ''; ?>">
+                        <img src="<?php echo BASE_URL . $app['img']; ?>" class="<?php echo $app['class'] ?? ''; ?>" loading="lazy">
                     <?php endif; ?>
                 </a>
             <?php endforeach; ?>
@@ -50,7 +50,7 @@ endforeach; ?>
     </div>
     <div class="clearfix"></div>
     <div class="footer-nic" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
-				<p class="foot-note nic-footer nic-footer-right"><img src="<?php echo BASE_URL; ?>images/nic_footer_logo.png">تطوير وتشغيل مركز
+				<p class="foot-note nic-footer nic-footer-right"><img src="<?php echo BASE_URL; ?>images/nic_footer_logo.png" loading="lazy">تطوير وتشغيل مركز
 					المعلومات الوطني</p>
 				<p class="foot-note nic-footer nic-footer-left">للاستفسار عن الخدمات الالكترونية "ابشر" اتصل على الرقم
 					<em>920020405</em>

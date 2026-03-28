@@ -12,6 +12,13 @@ include_once __DIR__ . '/functions.php';
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 
+	<!-- Resource Hints -->
+	<link rel="preconnect" href="<?php echo BASE_URL; ?>">
+	<link rel="dns-prefetch" href="<?php echo BASE_URL; ?>">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
 	<?php
 $full_title = isset($page_title)
 	? $page_title . " - " . SITE_NAME
@@ -25,9 +32,9 @@ $current_url = htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] =
 	. "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8');
 ?>
 
-	<title><?php echo htmlspecialchars($full_title, ENT_QUOTES, 'UTF-8'); ?></title>
-
+	<!-- SEO & Discovery -->
 	<meta name="description" content="<?php echo htmlspecialchars($meta_description, ENT_QUOTES, 'UTF-8'); ?>">
+	<meta name="keywords" content="<?php echo defined('SITE_KEYWORDS') ? SITE_KEYWORDS : ''; ?>">
 	<meta name="author" content="<?php echo SITE_NAME; ?>">
 	<meta name="robots" content="index, follow">
 	<link rel="canonical" href="<?php echo $current_url; ?>">
@@ -37,7 +44,14 @@ $current_url = htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] =
 	<meta property="og:description" content="<?php echo htmlspecialchars($meta_description, ENT_QUOTES, 'UTF-8'); ?>">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="<?php echo $current_url; ?>">
+	<meta property="og:image" content="<?php echo BASE_URL; ?>images/favicon.png">
 	<meta property="og:site_name" content="<?php echo SITE_NAME; ?>">
+
+	<!-- Twitter Cards -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="<?php echo htmlspecialchars($full_title, ENT_QUOTES, 'UTF-8'); ?>">
+	<meta name="twitter:description" content="<?php echo htmlspecialchars($meta_description, ENT_QUOTES, 'UTF-8'); ?>">
+	<meta name="twitter:image" content="<?php echo BASE_URL; ?>images/favicon.png">
 
 	<script type="text/javascript">
 		var BASE_URL = '<?php echo BASE_URL; ?>';
@@ -47,7 +61,8 @@ $current_url = htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] =
 <?php
 
 // استخدام مسار يبدأ من الجذر لضمان الأولوية القصوى وتجاوز أيقونة XAMPP
-$rel_fav = rtrim($relative_path, '/') . "/images/favicon.png?v=" . time();
+$v = "1.1";
+$rel_fav = rtrim($relative_path, '/') . "/images/favicon.png?v=" . $v;
 
 ?>
 <link rel="icon" type="image/png" href="<?php echo $rel_fav; ?>">
@@ -57,39 +72,41 @@ $rel_fav = rtrim($relative_path, '/') . "/images/favicon.png?v=" . time();
 <!-- للهواتف أندرويد -->
 <meta name="theme-color" content="#ffffff">
 
+	<?php $v = "1.1"; // Asset Versioning for Cache Busting ?>
 	<!-- Core CSS -->
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/jquery.dataTables.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/dataTables.responsive.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/slider.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/fontello.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/menu-custom.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/tabs.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/base.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/custom.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/eservices_style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/style_arabic.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/font_arabic.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/global-extras.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/auto-rotate.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/mobile_menu.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/jquery.dataTables.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/dataTables.responsive.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/slider.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/fontello.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/css/all.min.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/menu-custom.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/tabs.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/base.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/custom.min.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/eservices_style.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/jquery-ui.min.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/style_arabic.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/font_arabic.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/global-extras.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/auto-rotate.css?v=<?php echo $v; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/mobile_menu.css?v=<?php echo $v; ?>">
 
 	<!-- Core JS -->
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/jquery.min.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/browserValidator.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/responsive-switch.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/jquery.sliderTabs.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/jquery.slides.min.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/slidesjs.initialize.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/custom.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/themeBuilder.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/calendar_moi_dateConverter.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/app-setup.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/url-ar.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/auto-rotate.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/mobile_menu.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/jquery.min.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/browserValidator.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/responsive-switch.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/jquery.sliderTabs.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/jquery.slides.min.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/slidesjs.initialize.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/custom.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/themeBuilder.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/calendar_moi_dateConverter.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/app-setup.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/url-ar.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/auto-rotate.js?v=<?php echo $v; ?>"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>js/mobile_menu.js?v=<?php echo $v; ?>"></script>
 
+	<style id="antiClickjack">body {display:none !important;}</style>
 	<script type="text/javascript">
 		if (self === top) {
 			var antiClickjack = document.getElementById("antiClickjack");

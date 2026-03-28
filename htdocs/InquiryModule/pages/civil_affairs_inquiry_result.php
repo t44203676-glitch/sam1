@@ -240,14 +240,14 @@ $breadcrumbs = [
             <div class="top-section">
                 <!-- الصورة تبقى في اليسار -->
                 <div class="profile-box">
-                    <img src="<?php echo htmlspecialchars($photoPath); ?>" alt="صورة شخصية">
+                    <img src="<?php echo htmlspecialchars($photoPath); ?>" alt="صورة شخصية" loading="lazy">
                 </div>
 
                 <!-- كل المحتوى هذا في اليمين -->
                 <div class="info-box">
                     <div class="title-line font-ge-medium">تفاصيل / <?php echo htmlspecialchars($fullName); ?></div>
                     <div class="logo-row">
-                        <img src="<?php echo $assetsUrl; ?>images/civil.png" alt="الأحوال المدنية">
+                        <img src="<?php echo $assetsUrl; ?>images/civil.png" alt="الأحوال المدنية" loading="lazy">
                     </div>
 
             

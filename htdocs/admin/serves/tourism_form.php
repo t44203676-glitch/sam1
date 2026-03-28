@@ -29,14 +29,16 @@ $serviceConfig = [
     'tourism' => ['prefix' => '2', 'table' => 'tourism_visits', 'title' => 'زيارة سياحية'],
 ];
 
-// استعادة بيانات النموذج والأخطاء من الجلسة في حالة حدوث خطأ في التحقق
-if (isset($_SESSION['form_data'])) {
+// تهيئة المتغيرات إذا لم تكن موجودة بالفعل
+if (!isset($errors)) $errors = [];
+if (!isset($form_data)) $form_data = [];
+
+// استعادة بيانات النموذج والأخطاء من الجلسة
+if (empty($form_data) && isset($_SESSION['form_data'])) {
     $form_data = $_SESSION['form_data'];
-    unset($_SESSION['form_data']);
 }
-if (isset($_SESSION['form_errors'])) {
+if (empty($errors) && isset($_SESSION['form_errors'])) {
     $errors = $_SESSION['form_errors'];
-    unset($_SESSION['form_errors']);
 }
 
 $isEdit = (isset($mode) && $mode === 'edit');
