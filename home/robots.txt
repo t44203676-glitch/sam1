@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /includes/
-Disallow: /api/
-Disallow: /config.php
-Disallow: /temp/
-Disallow: /InquiryModule/
-
-Sitemap: <?php echo BASE_URL; ?>sitemap.xml
